@@ -15,7 +15,6 @@ import devandroid.jeff.applistacurso.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
     Pessoa pessoa;
-    String dadosPessoa;
     EditText et_primeiroNome;
     EditText et_sobreNome;
     EditText et_nomeCurso;
@@ -31,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pessoa = new Pessoa();
-       /* pessoa.setPrimeiroNome("Jef");
-        pessoa.setSobreNome("Robersvaldo");
-        pessoa.setCursoDesejado("Dev");
-        pessoa.setTelefoneContato("31-3423433"); */
 
         et_primeiroNome = findViewById(R.id.et_primeiro_nome);
         et_sobreNome = findViewById(R.id.et_sobrenome);
@@ -73,11 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setSobreNome(et_sobreNome.getText().toString());
                 pessoa.setTelefoneContato(et_telefoneContato.getText().toString());
                 pessoa.setCursoDesejado(et_nomeCurso.getText().toString());
-                Toast.makeText(MainActivity.this, "Salvo "+ pessoa.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
         Log.i("Teste", pessoa.toString());
-
     }
 }
