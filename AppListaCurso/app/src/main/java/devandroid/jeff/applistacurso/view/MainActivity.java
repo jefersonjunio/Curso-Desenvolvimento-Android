@@ -2,6 +2,7 @@ package devandroid.jeff.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +15,6 @@ import devandroid.jeff.applistacurso.controller.PessoaController;
 import devandroid.jeff.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-
     Pessoa pessoa;
     PessoaController controller;
     EditText et_primeiroNome;
@@ -25,15 +25,15 @@ public class MainActivity extends AppCompatActivity {
     Button bt_salvar;
     Button bt_finalizar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         pessoa = new Pessoa();
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
         controller.toString();
+        controller.buscar(pessoa);
 
         et_primeiroNome = findViewById(R.id.et_primeiro_nome);
         et_sobreNome = findViewById(R.id.et_sobrenome);
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 et_primeiroNome.setText("");
                 et_sobreNome.setText("");
                 et_telefoneContato.setText("");
+                controller.limpar();
             }
         });
         bt_finalizar.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setSobreNome(et_sobreNome.getText().toString());
                 pessoa.setTelefoneContato(et_telefoneContato.getText().toString());
                 pessoa.setCursoDesejado(et_nomeCurso.getText().toString());
-                //Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_SHORT).show();
 
                 controller.salvaPessoa(pessoa);
             }
