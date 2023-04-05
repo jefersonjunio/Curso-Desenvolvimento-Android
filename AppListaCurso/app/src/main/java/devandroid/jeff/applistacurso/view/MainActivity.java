@@ -2,20 +2,26 @@ package devandroid.jeff.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.List;
+
 import devandroid.jeff.applistacurso.R;
+import devandroid.jeff.applistacurso.controller.CursoController;
 import devandroid.jeff.applistacurso.controller.PessoaController;
 import devandroid.jeff.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
     Pessoa pessoa;
+    CursoController cursoController;
+    List<String> nomesDosCursos;
     PessoaController controller;
     EditText et_primeiroNome;
     EditText et_sobreNome;
@@ -24,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Button bt_limpar;
     Button bt_salvar;
     Button bt_finalizar;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         controller.toString();
         controller.buscar(pessoa);
 
+        cursoController = new CursoController();
+        nomesDosCursos = cursoController.dadosParaSpinner();
+
         et_primeiroNome = findViewById(R.id.et_primeiro_nome);
         et_sobreNome = findViewById(R.id.et_sobrenome);
         et_nomeCurso = findViewById(R.id.et_nome_curso);
@@ -43,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
         bt_limpar = findViewById(R.id.bt_limpar);
         bt_finalizar = findViewById(R.id.bt_finalizar);
         bt_salvar = findViewById(R.id.bt_salvar);
+
+        spinner = findViewById(R.id.spinner_lista);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                cursoController.dadosParaSpinner());
+
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(adapter);
 
         et_primeiroNome.setText(pessoa.getPrimeiroNome());
         et_sobreNome.setText(pessoa.getSobreNome());
