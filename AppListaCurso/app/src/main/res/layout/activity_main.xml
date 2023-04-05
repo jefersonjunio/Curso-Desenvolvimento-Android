@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,62 +10,79 @@
         android:id="@+id/tv_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         android:text="@string/txt_titulo"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        />
 
     <EditText
         android:id="@+id/et_primeiro_nome"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_below="@+id/tv_titulo"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="@string/txt_hint_et_primeiro_nome"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo" />
+        />
 
     <EditText
         android:id="@+id/et_sobrenome"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_below="@+id/et_primeiro_nome"
         android:ems="10"
         android:hint="@string/txt_hint_et_sobrenome"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_primeiro_nome" />
+         />
+
 
     <EditText
         android:id="@+id/et_nome_curso"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_below="@+id/et_sobrenome"
         android:ems="10"
         android:hint="@string/txt_hint_et_nome_curso"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_sobrenome" />
+         />
 
     <EditText
         android:id="@+id/et_telefone"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_below="@+id/et_nome_curso"
         android:ems="10"
         android:hint="@string/txt_hint_et_telefone"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_nome_curso" />
+         />
+
+    <TextView
+        android:id="@+id/tv_listaCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_telefone"
+        android:layout_margin="16dp"
+        android:text="@string/escolha_um_curso"
+        android:textStyle="bold"
+        android:textSize="18sp"
+
+        />
+
+    <Spinner
+        android:id="@+id/spinner_lista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_listaCurso"
+        android:layout_margin="16dp"
+        />
+
 
     <Button
         android:id="@+id/bt_limpar"
@@ -73,35 +90,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="80dp"
+        android:layout_below="@+id/spinner_lista"
+        android:layout_marginTop="30dp"
         android:text="@string/txt_bt_limpar"
-        app:layout_constraintBottom_toTopOf="@+id/bt_finalizar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_telefone"
-        app:layout_constraintVertical_bias="1.0" />
+        />
 
     <Button
         android:id="@+id/bt_salvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
+        android:layout_marginStart="290dp"
         android:layout_marginBottom="80dp"
+        android:layout_below="@+id/spinner_lista"
+        android:layout_marginTop="30dp"
+        android:layout_alignStart="@+id/spinner_lista"
         android:text="@string/txt_bt_salvar"
-        app:layout_constraintBottom_toTopOf="@+id/bt_finalizar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toEndOf="@+id/bt_limpar"
-        app:layout_constraintTop_toBottomOf="@+id/et_telefone"
-        app:layout_constraintVertical_bias="1.0" />
+        />
 
     <Button
         android:id="@+id/bt_finalizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_below="@+id/bt_limpar"
+        android:layout_marginTop="16dp"
         android:text="@string/txt_bt_finalizar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_telefone" />
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
